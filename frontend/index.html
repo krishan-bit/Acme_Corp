@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - HealthTrack</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>HealthTrack</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Dashboard</a>
+                <a href="#" class="nav-link">Medication</a>
+                <a href="#" class="nav-link">Support</a>
+                <a href="#" class="nav-link">Resources</a>
+                <div class="nav-icons">
+                    <i class="fas fa-bell"></i>
+                    <div class="profile-pic">
+                        <img src="https://via.placeholder.com/40x40/4CAF50/FFFFFF?text=S" alt="Profile">
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h1>Welcome back, Admin</h1>
+                <h2>Patient Management Dashboard</h2>
+            </section>
+
+            <!-- Patient Stats -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <h3>Total Patients</h3>
+                    <div class="stat-number" id="totalPatients">0</div>
+                    <p>Active patients in system</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Cases</h3>
+                    <div class="stat-number" id="activeCases">0</div>
+                    <p>Currently active</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Recent Updates</h3>
+                    <div class="stat-number" id="recentUpdates">0</div>
+                    <p>This week</p>
+                </div>
+            </section>
+
+            <!-- Patient Management Section -->
+            <section class="patient-section">
+                <div class="section-header">
+                    <h2>Patient Management</h2>
+                    <div class="controls">
+                        <input type="text" id="searchInput" placeholder="Search patients..." class="search-input">
+                        <select id="statusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                        <button id="addPatientBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Patient
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Patient Table -->
+                <div class="table-container">
+                    <table class="patient-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Condition</th>
+                                <th>Last Visit</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientTableBody">
+                            <!-- Patients will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination buttons will be generated here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add/Edit Patient Modal -->
+    <div id="patientModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New Patient</h3>
+                <span class="close">&times;</span>
+            </div>
+            <form id="patientForm">
+                <div class="form-group">
+                    <label for="patientName">Name:</label>
+                    <input type="text" id="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientAge">Age:</label>
+                    <input type="number" id="patientAge" min="0" max="150" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientEmail">Email:</label>
+                    <input type="email" id="patientEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientPhone">Phone:</label>
+                    <input type="tel" id="patientPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientCondition">Condition:</label>
+                    <input type="text" id="patientCondition" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientStatus">Status:</label>
+                    <select id="patientStatus" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Patient</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
